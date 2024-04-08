@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -10,7 +11,12 @@ namespace CarLotSimulator
     {
         static void Main(string[] args)
         {
-            
+            //instantiate
+            CarLot lot = new CarLot();
+
+          
+
+
             Car car1 = new Car()
             {
                 Year = 2002,
@@ -20,7 +26,9 @@ namespace CarLotSimulator
                 HonkNoise = "a squeek",
                 IsDriveable = true
             };
-            car1.MakeHonkNoise();
+            Console.WriteLine($"Number of Cars {CarLot.NumberOfCars}");
+            lot.ListOfCars.Add(car1);
+         car1.MakeHonkNoise();
 
             Car car2 = new Car();
             car2.Make = "Tesla";
@@ -29,13 +37,36 @@ namespace CarLotSimulator
             car2.EngineNoise = "no noise";
             car2.HonkNoise = "set to truck honk";
             car2.IsDriveable = true;
-
+           
+            lot.ListOfCars.Add(car2);
             car2.MakeEngineNoise();
 
             Car car3 = new Car("Farrari", "Fancy", 2024);
             car3.EngineNoise = "Howdy";
+            car3.Make = "Farrari";
+            car3.Year = 2024;
+            car3.Model = "car";
             car3.MakeEngineNoise();
+            lot.ListOfCars.Add(car3);
 
+            Car car4 = new Car();
+            car4.Make = "Toyota";
+            car4.Year = 2017;
+            car4.Model = "mini van";
+            car4.EngineNoise = "constantly vibrateing clinkity clank";
+            car4.HonkNoise = "a dull BEEP...";
+            car4.IsDriveable = true;
+            lot.ListOfCars.Add(car4);
+            Car car5 = new Car()
+            {
+                Make = "Toyota",
+                Year = 2020,
+                Model = "car",
+                EngineNoise = "slight vroom hum",
+                HonkNoise = "a loud BEEEEEP",
+                IsDriveable = true,
+            };
+            lot.ListOfCars.Add(car5);
 
 
 
@@ -46,7 +77,7 @@ namespace CarLotSimulator
 
             person1.Greeting(person1.NameOfPerson);
 
-            
+
 
 
             //TODO
@@ -68,11 +99,17 @@ namespace CarLotSimulator
             //*************BONUS X 2*************//
 
             //Create a CarLot class
-            //It should have at least one property: a List of cars
-            //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
+            //It should have at least one property: a List of cars ,done
+            //Instanciate the Carlot at the beginning of the program and as you create a car add the car to the list. done
             //At the end iterate through the list printing each of car's Year, Make, and Model to the console
-
-
+            Console.WriteLine("");
+            foreach(Car item in lot.ListOfCars)
+            {
+                Console.WriteLine($"Make:{item.Make}");
+                Console.WriteLine($"Model:{item.Model}");
+                Console.WriteLine($"Year:{item.Year}");
+                Console.WriteLine("");
+            }
 
 
 
